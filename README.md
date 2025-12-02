@@ -1,10 +1,10 @@
-# Sales-Analysis
----
 
-# **Sales Analysis Dashboard**
+# Sales Analysis
 
-## **1. Objective**
+A brief description of what this project does and who it's f dor
 
+
+## 1. Objective
 The goal of this project was to build a **3-page interactive Sales Analysis Dashboard in Power BI** that helps business stakeholders understand:
 
 - Key revenue drivers
@@ -15,11 +15,7 @@ The goal of this project was to build a **3-page interactive Sales Analysis Dash
 - Customer retention trends
 
 This dashboard supports **faster decisions, better insights, and data-driven strategy**.
-
----
-
-## **2. Dataset**
-
+## 2. Dataset
 **Global Superstore Dataset** (Kaggle)
 
 Contains:
@@ -32,58 +28,42 @@ Contains:
 - Sales, Profit, Quantity
 - Discounts
 - Shipping dates & modes
-
----
-
-## **3. Key Business Questions Solved**
-
+## 3. Key Business Questions Solved
 The dashboard answers the following real-world questions:
 
-### **Sales & Product**
+### *Sales & Product*
 
 1. Which products and categories drive the most sales and profit?
 2. How do sales and profit trend over time?
 
-### **Customers**
+### *Customers*
 
 1. Which customer segments are most valuable?
 2. What is customer repeat behavior and retention?
 
-### **Regions**
+### *Regions*
 
 1. Which regions/states underperform or outperform?
 
-### **Operations**
+### *Operations*
 
 1. What operational issues (shipping delays) affect customer satisfaction?
 
-### **Leadership Insights**
+### *Leadership Insights*
 
 1. What are the top actionable insights for business leaders?
-
----
-
-## **4. Assumptions**
-
+## 4. Assumptions
 - Shipping Delay = **Ship Date – Order Date**
 - Profit Margin % = **Profit / Sales**
 - Avg Order Value = **Total Sales / Total Orders**
 - Returning customer = customers with **>1 order**
 - Missing numeric values were filled with 0 when appropriate, or removed if they could not be used reliably
 - Date dimensions follow standard calendar year-month format
-
----
-
-## **5. Data Cleaning (Power Query)**
-
+## 5. Data Cleaning (Power Query)
 - Removed rows with no Order ID or Customer ID
 - Blank numeric cells replaced with 0
 - understood data using column quality, column profile and column distribution
-
----
-
-## **6. SQL Transformations**
-
+## 6. SQL Transformations
 Performed before loading into Power BI:
 
 - **Created database and staging table (`stg_superstore`)** using `SELECT INTO`
@@ -96,31 +76,23 @@ Performed before loading into Power BI:
 - **Validated date quality** by checking for invalid rows where `Ship_Date < Order_Date`
 - **Ensured consistent datatypes** for all columns using `INFORMATION_SCHEMA.COLUMNS`
 - **Maintained clean backup and staging layers** to separate raw data from cleaned data
-
----
-
-## **7. Data Modeling (Star Schema)**
-
-### **Fact Table**
+## 7. Data Modeling (Star Schema)
+### *Fact Table*
 
 stg_superstore
 
-### **Dimension Tables**
+### *Dimension Tables*
 
-- **Dim Customers**
-- **Dim Date**
+- Dim Customers
+- Dim Date
 - Dim Products
 
-### **Relationships**
+### *Relationships*
 
 - 1–Many: DimDate → stg_superstore
 - 1–Many: DimCustomer → stg_superstore
 - 1–Many: DimProduct → stg_superstore
-
----
-
-## **8. Key DAX Measures**
-
+## 8. Key DAX Measures
 ### Core Metrics:
 
 ```
@@ -174,13 +146,10 @@ IF(
 )
 ```
 
-## **9. Dashboard Pages**
+## 9. Dashboard Pages
+### *Page 1 — Sales Overview*
 
----
-
-# **📄 Page 1 — Sales Overview**
-
-### Contains:
+Contains:
 
 - Six KPI Cards
 - Monthly Sales Trend (3M rolling average)
@@ -190,17 +159,17 @@ IF(
 - Segment × Category Profit Matrix
 - Quick Insights Box
 
-### Insights:
+Insights:
 
 - Technology is top profit driver
 - Furniture  → lower margins
 - Avg Shipping Delay around 4 days
 
----
+Snip: [Page 1](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/87606d4ac285befebb5863e4f18d37cf986f2278/Assets/Page%201.png)
 
-# **📄 Page 2 — Product Performance**
+### *Page 2 — Product Performance*
 
-### Contains:
+Contains:
 
 - Product slicer + Top N selector
 - Pareto Chart (Sales + Cumulative %)
@@ -208,16 +177,17 @@ IF(
 - Detailed product-level table with sparklines
 - Recommendations card
 
-### Insights:
+Insights:
 
 - 20% of products drive ~80% of sales
 - Some high-volume products generate negative profit
 
----
+Snip: [Page 2](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/87606d4ac285befebb5863e4f18d37cf986f2278/Assets/Page%202.png)
 
-# **📄 Page 3 — Region & Customers**
 
-### Contains:
+### *Page 3 — Region & Customers*
+
+Contains:
 
 - Returning Customer %
 - Avg Order Frequency
@@ -229,37 +199,27 @@ IF(
 - Cohort Retention Matrix
 - Quick Insights Panel
 
-### Insights:
+Insights:
 
 - High delivery delays in Standard Class
 - Medium CLV group offers biggest uplift potential
 - Early retention drops fast → need onboarding interventions
 
----
-
-## **10. Limitations**
-
+Snip: [Page 3](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/87606d4ac285befebb5863e4f18d37cf986f2278/Assets/Page%203.png)
+## 10. Limitations
 - Dataset is simulated
 - No COGS → cannot compute true gross margin
 - No marketing data
 - Static data: no real-time refresh
 - No return data
-
----
-
-## **11. Future Enhancements**
-
+## 11. Future Enhancements
 - Add **Churn Prediction** model
 - Add **Sales Forecasting (ML)**
 - Add **RFM Segmentation**
 - Build **What-If Pricing Simulator**
 - Add **Mobile layout**
 - Include **Inventory analytics**
-
----
-
-## **12. Final Summary**
-
+## 12. Final Summary
 This project demonstrates:
 
 - End-to-end BI development (SQL → Power Query → DAX → Visualization)
@@ -268,5 +228,3 @@ This project demonstrates:
 - Ability to answer real business questions
 
 This Sales Dashboard equips stakeholders with a **overview of performance** and enables **data-driven decisions across sales, operations, customer behavior, and product strategy**.
-
----
