@@ -228,3 +228,6 @@ This project demonstrates:
 - Ability to answer real business questions
 
 This Sales Dashboard equips stakeholders with a **overview of performance** and enables **data-driven decisions across sales, operations, customer behavior, and product strategy**.
+
+## 12. Report
+[Superstore Power BI]()
