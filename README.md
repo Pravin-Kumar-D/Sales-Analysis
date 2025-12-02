@@ -82,7 +82,8 @@ Performed before loading into Power BI:
 
 stg_superstore
 
-### *Dimension Tables* (Dimension tables were created to organize the data more effectively and support a clean, high-performance star-schema model)
+### *Dimension Tables* 
+(Dimension tables were created to organize the data more effectively and support a clean, high-performance star-schema model)
 
 - Dim Customers
 - Dim Date
