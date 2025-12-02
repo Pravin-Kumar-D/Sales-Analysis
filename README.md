@@ -59,7 +59,7 @@ The dashboard answers the following real-world questions:
 - Returning customer = customers with **>1 order**
 - Missing numeric values were filled with 0 when appropriate, or removed if they could not be used reliably
 - Date dimensions follow standard calendar year-month format
-- ## 5. SQL Transformations
+## 5. SQL Transformations
 Performed before loading into Power BI:
 
 - **Created database and staging table (`stg_superstore`)** using `SELECT INTO`
@@ -82,7 +82,7 @@ Performed before loading into Power BI:
 
 stg_superstore
 
-### *Dimension Tables*
+### *Dimension Tables* (Dimension tables were created to organize the data more effectively and support a clean, high-performance star-schema model)
 
 - Dim Customers
 - Dim Date
