@@ -59,11 +59,7 @@ The dashboard answers the following real-world questions:
 - Returning customer = customers with **>1 order**
 - Missing numeric values were filled with 0 when appropriate, or removed if they could not be used reliably
 - Date dimensions follow standard calendar year-month format
-## 5. Data Cleaning (Power Query)
-- Removed rows with no Order ID or Customer ID
-- Blank numeric cells replaced with 0
-- understood data using column quality, column profile and column distribution
-## 6. SQL Transformations
+- ## 5. SQL Transformations
 Performed before loading into Power BI:
 
 - **Created database and staging table (`stg_superstore`)** using `SELECT INTO`
@@ -76,6 +72,11 @@ Performed before loading into Power BI:
 - **Validated date quality** by checking for invalid rows where `Ship_Date < Order_Date`
 - **Ensured consistent datatypes** for all columns using `INFORMATION_SCHEMA.COLUMNS`
 - **Maintained clean backup and staging layers** to separate raw data from cleaned data
+## 6. Data Cleaning (Power Query)
+- Removed rows with no Order ID or Customer ID
+- Blank numeric cells replaced with 0
+- understood data using column quality, column profile and column distribution
+
 ## 7. Data Modeling (Star Schema)
 ### *Fact Table*
 
@@ -229,5 +230,5 @@ This project demonstrates:
 
 This Sales Dashboard equips stakeholders with a **overview of performance** and enables **data-driven decisions across sales, operations, customer behavior, and product strategy**.
 
-## 12. Report
+## 13. Report
 [Superstore Power BI](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/232a681be2e28968990c5a855e43152928b659e2/Assets/Superstore.pbix)
