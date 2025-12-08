@@ -207,7 +207,7 @@ Insights:
 - Medium CLV group offers biggest uplift potential
 - Early retention drops fast → need onboarding interventions
 
-Snip: [Page 3](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/87606d4ac285befebb5863e4f18d37cf986f2278/Assets/Page%203.png)
+Snip: [Page 3](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/4b698dbc50168fab6328d044933dea8e9de8c853/Assets/Page%203.png)
 ## 10. Limitations
 - Dataset is simulated
 - No COGS → cannot compute true gross margin
