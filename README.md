@@ -232,4 +232,5 @@ This project demonstrates:
 This Sales Dashboard equips stakeholders with a **overview of performance** and enables **data-driven decisions across sales, operations, customer behavior, and product strategy**.
 
 ## 13. Report
-[Superstore Power BI](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/232a681be2e28968990c5a855e43152928b659e2/Assets/Superstore.pbix)
+[Superstore Power BI](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/c17371cf679f84551263f30d3d710326de262718/Assets/Superstore.pbix)
+
