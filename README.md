@@ -111,7 +111,9 @@ Build a scalable, interactive dashboard that converts raw sales data into **clea
 
 4. **Power BI Report(.pbix)**
 
-5. **Project Documentation**
+[Sales Analysis.pbix]()
+
+6. **Project Documentation**
 
    [Sales Analysis - Superstore.pdf](https://github.com/user-attachments/files/24149093/Sales.Analysis.-.Superstore.pdf)
 
