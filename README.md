@@ -1,236 +1,104 @@
 
 # Sales Analysis
 
-A brief description of what this project does and who it's f dor
 
 
-## 1. Objective
-The goal of this project was to build a **3-page interactive Sales Analysis Dashboard in Power BI** that helps business stakeholders understand:
 
-- Key revenue drivers
-- Product profitability
-- Customer value
-- Regional performance
-- Operational inefficiencies (delivery delays)
-- Customer retention trends
+## 1. Executive Summary
 
-This dashboard supports **faster decisions, better insights, and data-driven strategy**.
-## 2. Dataset
-**Global Superstore Dataset** (Kaggle)
+Using **SQL** and **Power BI**, I analyzed retail sales data from the **Global Superstore** dataset to understand revenue drivers, product profitability, regional performance, and customer behavior.
 
-Contains:
+The project focuses on identifying **what drives profit**, **where performance drops**, and **which actions can improve business outcomes**. The final output is an interactive Power BI dashboard that enables stakeholders to self-serve insights across sales, products, regions, and customers.
 
-- Orders
-- Customers
-- Products
-- Categories & Sub-categories
-- Regions / States
-- Sales, Profit, Quantity
-- Discounts
-- Shipping dates & modes
-## 3. Key Business Questions Solved
-The dashboard answers the following real-world questions:
+**Key outcomes from the analysis:**
 
-### *Sales & Product*
+- Identified categories and products driving the majority of profit
+- Highlighted margin erosion caused by excessive discounting
+- Surfaced regional performance gaps and delivery delays
+- Segmented customers by value and retention behavior
+- Delivered actionable recommendations to improve profitability and retention
 
-1. Which products and categories drive the most sales and profit?
-2. How do sales and profit trend over time?
+## 2. Business Problem
+Retail stakeholders need visibility into **sales performance**, **profitability**, and **customer behavior**, but raw transactional data makes it difficult to answer questions such as:
 
-### *Customers*
+- Which products and categories truly drive profit?
+- Are discounts hurting margins?
+- Which regions are underperforming?
+- How do delivery delays impact customer retention?
+- Which customer segments are most valuable long-term?
 
-1. Which customer segments are most valuable?
-2. What is customer repeat behavior and retention?
+Without a centralized analytical view, decision-making becomes slow and reactive.
 
-### *Regions*
+**Objective:**
 
-1. Which regions/states underperform or outperform?
+Build a scalable, interactive dashboard that converts raw sales data into **clear insights and business actions**.
+## 3. Methodology
+1. **Data Extraction & Cleaning (SQL)**
+- Loaded raw Superstore data into a staging table
+- Removed duplicates and cleaned text fields
+- Created derived columns for shipping delay, profit margin, and date attributes
+2. **Data Modeling (Power BI)**
+- Designed a clean **star schema**
+- Created dedicated dimension tables (Customer, Product, Date, Region)
+- Established optimized relationships for efficient DAX calculations
+3. **Analysis & Visualization (Power BI)**
+- Built KPIs and advanced DAX measures
+- Designed three dashboard pages for executive, product, and customer insights
+- Applied consistent UI/UX design principles
+4. **Insight Generation**
+- Interpreted trends and patterns
+- Converted insights into clear business recommendations
+## 4. Skills
+**SQL**
 
-### *Operations*
+- CTEs
+- Window functions (`ROW_NUMBER`)
+- Data cleaning & deduplication
+- Computed columns
+- Date functions
 
-1. What operational issues (shipping delays) affect customer satisfaction?
+**Power BI**
 
-### *Leadership Insights*
+- Data modeling (Star Schema)
+- DAX measures & time intelligence
+- KPI design
+- Interactive dashboards
+- Slicers, filters, and drill-downs
 
-1. What are the top actionable insights for business leaders?
-## 4. Assumptions
-- Shipping Delay = **Ship Date – Order Date**
-- Profit Margin % = **Profit / Sales**
-- Avg Order Value = **Total Sales / Total Orders**
-- Returning customer = customers with **>1 order**
-- Missing numeric values were filled with 0 when appropriate, or removed if they could not be used reliably
-- Date dimensions follow standard calendar year-month format
-## 5. SQL Transformations
-Performed before loading into Power BI:
+**Analytics Concepts**
 
-- **Created database and staging table (`stg_superstore`)** using `SELECT INTO`
-- **Removed duplicate records** using `ROW_NUMBER() OVER (PARTITION BY Order_ID, Product_ID ORDER BY Row_ID)`
-- **Cleaned and standardized text fields** using `LTRIM()`, `RTRIM()`, and `UPPER()` for customer, region, state, city, and product names
-- **Created computed columns** for business logic:
-    - `ShippingDelay` (Ship_Date – Order_Date)
-    - `ProfitMargin` (Profit / Sales, with divide-by-zero handling)
-    - `OrderYear`, `OrderMonth`, `OrderQuarter`
-- **Validated date quality** by checking for invalid rows where `Ship_Date < Order_Date`
-- **Ensured consistent datatypes** for all columns using `INFORMATION_SCHEMA.COLUMNS`
-- **Maintained clean backup and staging layers** to separate raw data from cleaned data
-## 6. Data Cleaning (Power Query)
-- Removed rows with no Order ID or Customer ID
-- Blank numeric cells replaced with 0
-- understood data using column quality, column profile and column distribution
+- Profitability analysis
+- Customer segmentation
+- Cohort analysis
+- Pareto (80/20) analysis
+- Operational performance tracking
+##  5. Results & Business Recommendations
+**Key Findings**
 
-## 7. Data Modeling (Star Schema)
-### *Fact Table*
+- A small percentage of products contribute to the majority of revenue (Pareto effect)
+- Furniture category shows high discounting with lower profit margins
+- West region outperforms other regions in total profit
+- Delivery delays vary significantly by shipping mode
+- Medium-value customers represent a strong opportunity for CLV growth
 
-stg_superstore
+**Recommendations**
 
-### *Dimension Tables* 
-(Dimension tables were created to organize the data more effectively and support a clean, high-performance star-schema model)
+- Increase conversion of **Medium-CLV customers** into **High-CLV customers** using targeted offers and retention strategies
+- Optimize discounting policies for low-margin product categories
+- Reduce delivery delays by improving shipping mode selection in high-impact regions
+- Prioritize high-profit products for promotions instead of high-discount items
+## 6. Next Steps
+- Add customer-level demographics for deeper segmentation
+- Introduce return reason analysis if data can be sourced
+- Build predictive models for sales forecasting
+- Implement RFM-based customer scoring
+- Add scenario-based “What-If” analysis for pricing and discounts
+## Project Assets
+1. **SQL transformation scripts**
 
-- Dim Customers
-- Dim Date
-- Dim Products
+2. **Data model diagrams**
 
-### *Relationships*
+3. **Report screenshots**
 
-- 1–Many: DimDate → stg_superstore
-- 1–Many: DimCustomer → stg_superstore
-- 1–Many: DimProduct → stg_superstore
-## 8. Key DAX Measures
-### Core Metrics:
-
-```
-Total Sales = SUM(Orders[Sales])
-
-Total Profit = SUM(Orders[Profit])
-
-Profit Margin % = DIVIDE([Total Profit], [Total Sales])
-
-Customer Count = DISTINCTCOUNT(Orders[Customer ID])
-
-Avg Shipping Days = AVERAGE(Orders[Shipping Delay])
-
-Avg Order Value = DIVIDE([Total Sales], COUNTROWS(Orders))
-
-Returning Customers = COUNTROWS(FILTER(ADDCOLUMNS('Dim Customer',"Order Count", CALCULATE(COUNTROWS(stg_superstore))),[Order Count]>1))
-
-Retention Count = 
-CALCULATE(
-    DISTINCTCOUNT('Dim Customer'[Customer_ID]),
-    FILTER(
-        ALL(stg_superstore),
-        stg_superstore[Order Year Month] = SELECTEDVALUE('Dim Date'[YearMonth])
-    ),
-    FILTER(
-        ALL('Dim Customer'),
-        'Dim Customer'[Cohort Month] = SELECTEDVALUE('Dim Customer'[Cohort Month]
-    )
-)
-)
-```
-
-### Time Intelligence:
-
-```
-Rolling 3M Sales = CALCULATE([Total Sales], DATESINPERIOD(DimDate[Date], MAX(DimDate[Date]), -3, MONTH))
-```
-
-### Product Page (Top N Filter):
-
-```
-Rank = RANKX(ALLSELECTED(stg_superstore[Product_Name]),[Product Sales],,DESC)
-
-Is In TopN = 
-VAR SelectedTopN = SELECTEDVALUE('TopN'[TopNValue], 10)
-RETURN
-IF(
-    SelectedTopN = 0,
-    1,
-    IF([Rank] <= SelectedTopN, 1, 0)
-)
-```
-
-## 9. Dashboard Pages
-### *Page 1 — Sales Overview*
-
-Contains:
-
-- Six KPI Cards
-- Monthly Sales Trend (3M rolling average)
-- Sales by Category
-- Top 5 Products
-- Sales by State Map
-- Segment × Category Profit Matrix
-- Quick Insights Box
-
-Insights:
-
-- Technology is top profit driver
-- Furniture  → lower margins
-- Avg Shipping Delay around 4 days
-
-Snip: [Page 1](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/87606d4ac285befebb5863e4f18d37cf986f2278/Assets/Page%201.png)
-
-### *Page 2 — Product Performance*
-
-Contains:
-
-- Product slicer + Top N selector
-- Pareto Chart (Sales + Cumulative %)
-- Sales vs Profit Scatter Plot (quantity = bubble size)
-- Detailed product-level table with sparklines
-- Recommendations card
-
-Insights:
-
-- 20% of products drive ~80% of sales
-- Some high-volume products generate negative profit
-
-Snip: [Page 2](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/87606d4ac285befebb5863e4f18d37cf986f2278/Assets/Page%202.png)
-
-
-### *Page 3 — Region & Customers*
-
-Contains:
-
-- Returning Customer %
-- Avg Order Frequency
-- Avg Discount
-- Avg Delivery Delay
-- Region Profit Bars
-- Delivery Delay Heatmap
-- CLV Bucket Chart
-- Cohort Retention Matrix
-- Quick Insights Panel
-
-Insights:
-
-- High delivery delays in Standard Class
-- Medium CLV group offers biggest uplift potential
-- Early retention drops fast → need onboarding interventions
-
-Snip: [Page 3](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/4b698dbc50168fab6328d044933dea8e9de8c853/Assets/Page%203.png)
-## 10. Limitations
-- Dataset is simulated
-- No COGS → cannot compute true gross margin
-- No marketing data
-- Static data: no real-time refresh
-- No return data
-## 11. Future Enhancements
-- Add **Churn Prediction** model
-- Add **Sales Forecasting (ML)**
-- Add **RFM Segmentation**
-- Build **What-If Pricing Simulator**
-- Add **Mobile layout**
-- Include **Inventory analytics**
-## 12. Final Summary
-This project demonstrates:
-
-- End-to-end BI development (SQL → Power Query → DAX → Visualization)
-- Clean modeling using Star Schema
-- Insight-driven storytelling
-- Ability to answer real business questions
-
-This Sales Dashboard equips stakeholders with a **overview of performance** and enables **data-driven decisions across sales, operations, customer behavior, and product strategy**.
-
-## 13. Report
-[Superstore Power BI](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/c17371cf679f84551263f30d3d710326de262718/Assets/Superstore.pbix)
+4. **Power BI Report(.pbix)**
 
