@@ -99,6 +99,15 @@ Build a scalable, interactive dashboard that converts raw sales data into **clea
 2. **Data model diagrams**
 
 3. **Report screenshots**
+<img width="1118" height="629" alt="Page 1" src="https://github.com/user-attachments/assets/066dadd9-e32c-4723-8dbd-73bcadd7e67a" />
+
+<img width="1118" height="630" alt="Page 2" src="https://github.com/user-attachments/assets/0ad2e888-95a6-49a6-bb3b-97e616e3e3bf" />
+
+<img width="1116" height="628" alt="Page 3" src="https://github.com/user-attachments/assets/0710a6e7-5297-4884-be11-0300c4a96c90" />
 
 4. **Power BI Report(.pbix)**
+
+5. **Project Documentation**
+   [Sales Analysis - Superstore.pdf](https://github.com/user-attachments/files/24149093/Sales.Analysis.-.Superstore.pdf)
+
 
