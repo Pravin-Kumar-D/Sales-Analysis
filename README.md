@@ -96,7 +96,7 @@ Build a scalable, interactive dashboard that converts raw sales data into **clea
 ## Project Assets
 1. **SQL transformation scripts**
 
-[Superstore SQL Script.sql](https://github.com/user-attachments/files/24164464/Superstore.SQL.Script.sql)
+   [Superstore SQL Script.sql](https://github.com/user-attachments/files/24164464/Superstore.SQL.Script.sql)
 
 2. **Report screenshots**
 
