@@ -96,9 +96,9 @@ Build a scalable, interactive dashboard that converts raw sales data into **clea
 ## Project Assets
 1. **SQL transformation scripts**
 
-2. **Data model diagrams**
+[Superstore SQL Script.sql](https://github.com/user-attachments/files/24164464/Superstore.SQL.Script.sql)
 
-3. **Report screenshots**
+2. **Report screenshots**
 
 <img width="1118" height="629" alt="Page 1" src="https://github.com/user-attachments/assets/066dadd9-e32c-4723-8dbd-73bcadd7e67a" />
 
@@ -109,11 +109,11 @@ Build a scalable, interactive dashboard that converts raw sales data into **clea
 <img width="1116" height="628" alt="Page 3" src="https://github.com/user-attachments/assets/0710a6e7-5297-4884-be11-0300c4a96c90" />
 
 
-4. **Power BI Report(.pbix)**
+3. **Power BI Report(.pbix)**
 
    [Sales Analysis.pbix](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/39e65347162e76df24c2fe7bbe4ba29c1dd4b489/Assets/Superstore.pbix)
 
-6. **Project Documentation**
+4. **Project Documentation**
 
    [Sales Analysis - Superstore.pdf](https://github.com/user-attachments/files/24149093/Sales.Analysis.-.Superstore.pdf)
 
