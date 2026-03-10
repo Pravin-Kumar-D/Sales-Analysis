@@ -113,8 +113,6 @@ Build a scalable, interactive dashboard that converts raw sales data into **clea
 
    [Sales Analysis.pbix](https://github.com/Pravin-Kumar-D/Sales-Analysis/blob/39e65347162e76df24c2fe7bbe4ba29c1dd4b489/Assets/Superstore.pbix)
 
-4. **Project Documentation**
 
-   [Sales Analysis - Superstore.pdf](https://github.com/user-attachments/files/24149093/Sales.Analysis.-.Superstore.pdf)
 
 
